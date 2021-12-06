@@ -22,7 +22,6 @@ class FeedsController < ApplicationController
   # POST /feeds or /feeds.json
   def create
     @feed = Feed.new(feed_params)
-
     respond_to do |format|
       if @feed.save
         format.html { redirect_to @feed, notice: "Feed was successfully created." }
@@ -33,7 +32,6 @@ class FeedsController < ApplicationController
       end
     end
   end
-
   # PATCH/PUT /feeds/1 or /feeds/1.json
   def update
     respond_to do |format|
@@ -46,7 +44,6 @@ class FeedsController < ApplicationController
       end
     end
   end
-
   # DELETE /feeds/1 or /feeds/1.json
   def destroy
     @feed.destroy
@@ -67,3 +64,4 @@ class FeedsController < ApplicationController
       params.require(:feed).permit(:content, :image, :image_cache)
     end
 end
+
