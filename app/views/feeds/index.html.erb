@@ -5,7 +5,7 @@
     <% @feeds.each do |feed| %>
       <tr>
         <td><%= image_tag feed.image.url %></td>
-        <td><p>comment：<%= feed.content%></td>
+        <td><p>comment：<%= feed.content%></p></td>
         <td><p>name：<%= feed.user.name %></p></td>
         <td><%= link_to 'Show', feed %></td>
         <td><%= link_to 'Edit', edit_feed_path(feed) %></td>
