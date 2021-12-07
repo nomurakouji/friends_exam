@@ -4,6 +4,7 @@ class FeedsController < ApplicationController
   # GET /feeds or /feeds.json
   def index
     @feeds = Feed.all
+    # @user = User.all
   end
 
   # GET /feeds/1 or /feeds/1.json
@@ -22,6 +23,7 @@ class FeedsController < ApplicationController
   # POST /feeds or /feeds.json
   def create
     @feed = Feed.new(feed_params)
+    @feed.user_id = current_user.id
     respond_to do |format|
       if @feed.save
         format.html { redirect_to @feed, notice: "Feed was successfully created." }
@@ -31,6 +33,11 @@ class FeedsController < ApplicationController
         format.json { render json: @feed.errors, status: :unprocessable_entity }
       end
     end
+  end
+  def confirm
+    @feed = Feed.new(feed_params)
+    @feed.user_id = current_user.id
+    render :new if @feed.invalid?
   end
   # PATCH/PUT /feeds/1 or /feeds/1.json
   def update
@@ -57,6 +64,8 @@ class FeedsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_feed
       @feed = Feed.find(params[:id])
+
+    
     end
 
     # Only allow a list of trusted parameters through.

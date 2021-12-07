@@ -8,7 +8,9 @@
   <strong>コメント:</strong>
   <%= @feed.content%>
 </p>
-
-
+<p> 
+<strong>投稿者:</strong>
+  <%= @feed.user.name %>
+</p>
 <%= link_to 'Edit', edit_feed_path(@feed) %> |
 <%= link_to 'Back', feeds_path %>
