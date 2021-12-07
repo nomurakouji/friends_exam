@@ -1,13 +1,12 @@
 <p id="notice"><%= notice %></p>
-
 <h1>友だちつながりアプリケーション</h1>
-
 <table>
   <tbody>
     <% @feeds.each do |feed| %>
       <tr>
         <td><%= image_tag feed.image.url %></td>
-        <td><%= feed.content%></td>
+        <td><p>comment：<%= feed.content%></td>
+        <td><p>name：<%= feed.user.name %></p></td>
         <td><%= link_to 'Show', feed %></td>
         <td><%= link_to 'Edit', edit_feed_path(feed) %></td>
         <td><%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
